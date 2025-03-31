@@ -11,7 +11,7 @@ DMXINIT2 = bytes([10]) + bytes([2]) + bytes([0]) + bytes([0]) + bytes([0])
 class DmxPy:
 	def __init__(self, serialPort):
 		try:
-			self.serial = serial.Serial(serialPort, baudrate=57600)
+			self.serial = serial.serial_for_url(f'rfc2217://localhost:{serialPort}', baudrate=57600)
 		except:
 			print("Error: could not open Serial Port")
 			sys.exit(0)
